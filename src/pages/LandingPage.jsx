@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react'
 import { useNavigate, Link } from 'react-router-dom'
-import { publicApi } from '../api/axios'
+import { publicApi, getMediaUrl } from '../api/axios'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { useGSAP } from '@gsap/react'
@@ -542,7 +542,7 @@ export default function LandingPage() {
                   <div className="relative w-32 h-32 mb-6">
                     <div className="absolute inset-0 rounded-full border-4 border-white shadow-md bg-slate-100 z-10 overflow-hidden">
                       {ketuaUmum.foto_url ? (
-                        <img src={ketuaUmum.foto_url} alt={ketuaUmum.nama} className="w-full h-full object-cover" />
+                        <img src={getMediaUrl(ketuaUmum.foto_url)} alt={ketuaUmum.nama} className="w-full h-full object-cover" />
                       ) : (
                         <div className="w-full h-full flex items-center justify-center text-slate-300">
                           <svg className="w-12 h-12" fill="currentColor" viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" /></svg>
@@ -783,7 +783,7 @@ export default function LandingPage() {
                 <Link to={`/berita/${beritaPublished[0].id}`} className="berita-featured group block">
                   <div className="aspect-[4/3] bg-slate-100 mb-8 overflow-hidden">
                     {beritaPublished[0].foto_url && (
-                      <img src={beritaPublished[0].foto_url} alt={beritaPublished[0].judul} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 grayscale group-hover:grayscale-0" />
+                      <img src={getMediaUrl(beritaPublished[0].foto_url)} alt={beritaPublished[0].judul} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 grayscale group-hover:grayscale-0" />
                     )}
                   </div>
                   <div className="flex items-center gap-4 mb-4">
@@ -798,7 +798,7 @@ export default function LandingPage() {
                 {beritaPublished.slice(1, 4).map(b => (
                   <Link key={b.id} to={`/berita/${b.id}`} className="berita-side-item group flex flex-col sm:flex-row gap-6 items-start">
                     <div className="w-full sm:w-32 aspect-[4/3] sm:aspect-square bg-slate-100 flex-shrink-0 overflow-hidden">
-                      {b.foto_url && <img src={b.foto_url} alt={b.judul} className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" />}
+                      {b.foto_url && <img src={getMediaUrl(b.foto_url)} alt={b.judul} className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" />}
                     </div>
                     <div className="flex-1">
                       <div className="flex items-center gap-3 mb-3">

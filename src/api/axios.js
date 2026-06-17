@@ -42,4 +42,11 @@ export const publicApi = axios.create({
 
 export const MEDIA_URL = isLocal ? 'http://localhost:5000' : ''
 
+export const getMediaUrl = (url) => {
+  if (!url) return ''
+  if (url.startsWith('http') && !url.startsWith('http://localhost:5000')) return url
+  const path = url.startsWith('http://localhost:5000') ? url.substring('http://localhost:5000'.length) : url
+  return `${MEDIA_URL}${path}`
+}
+
 export default api

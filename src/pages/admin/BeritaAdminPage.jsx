@@ -3,7 +3,7 @@ import { useBerita } from '../../context/BeritaContext'
 import Modal from '../../components/common/Modal'
 import SearchBar from '../../components/common/SearchBar'
 import QuillEditor from '../../components/common/QuillEditor'
-import api from '../../api/axios'
+import api, { getMediaUrl } from '../../api/axios'
 
 const kategoriList = ['Prestasi', 'Program', 'Organisasi', 'Umum']
 const empty = { judul: '', ringkasan: '', isi_html: '', kategori: 'Prestasi', foto_url: '' }
@@ -141,7 +141,7 @@ export default function BeritaAdminPage() {
                   {uploading ? 'Mengupload...' : 'Pilih File'}
                 </label>
               </div>
-              {form.foto_url && <img src={form.foto_url} alt="preview" className="mt-2 w-full h-32 object-cover rounded-lg" onError={e => e.target.style.display='none'}/>}
+              {form.foto_url && <img src={getMediaUrl(form.foto_url)} alt="preview" className="mt-2 w-full h-32 object-cover rounded-lg" onError={e => e.target.style.display='none'}/>}
             </div>
           </div>
           <div>

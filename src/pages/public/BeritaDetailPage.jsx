@@ -1,6 +1,7 @@
 import { useParams, useNavigate } from 'react-router-dom'
 import { useBerita } from '../../context/BeritaContext'
 import { formatTanggal } from '../../utils/helpers'
+import { getMediaUrl } from '../../api/axios'
 
 export default function BeritaDetailPage() {
   const { id } = useParams()
@@ -30,7 +31,7 @@ export default function BeritaDetailPage() {
       {/* Floating Back Button & Header Image */}
       <div className="relative w-full h-[40vh] md:h-[50vh] bg-slate-900">
         {berita.foto_url ? (
-          <img src={berita.foto_url} alt={berita.judul} className="w-full h-full object-cover opacity-60" />
+          <img src={getMediaUrl(berita.foto_url)} alt={berita.judul} className="w-full h-full object-cover opacity-60" />
         ) : (
           <div className="absolute inset-0 bg-gradient-to-br from-brand-600 to-slate-900" />
         )}

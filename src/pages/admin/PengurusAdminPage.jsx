@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import api from '../../api/axios'
+import api, { getMediaUrl } from '../../api/axios'
 import Modal from '../../components/common/Modal'
 
 const LEVEL_LABEL = {
@@ -124,7 +124,7 @@ export default function PengurusAdminPage() {
                 <tr key={p.id}>
                   <td>
                     {p.foto_url ? (
-                      <img src={p.foto_url} alt={p.nama} className="w-10 h-10 rounded-full object-cover border" />
+                      <img src={getMediaUrl(p.foto_url)} alt={p.nama} className="w-10 h-10 rounded-full object-cover border" />
                     ) : (
                       <div className="w-10 h-10 rounded-full bg-gray-200 flex items-center justify-center text-xs text-gray-500">No Img</div>
                     )}

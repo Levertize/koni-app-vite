@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import api from '../../api/axios'
+import api, { getMediaUrl } from '../../api/axios'
 /* ── Kartu satu pengurus ───────────────────────────────────────────────────── */
 function Card({ p, size = 'md' }) {
   const inisial = p.nama.split(' ').map(w => w[0]).filter(Boolean).slice(0, 2).join('').toUpperCase()
@@ -10,7 +10,7 @@ function Card({ p, size = 'md' }) {
       <div className="flex flex-col items-center group">
         <div className="w-24 h-24 rounded-full bg-gradient-to-br from-brand-500 to-rose-700 border-4 border-white flex items-center justify-center shadow-lg shadow-brand-500/30 group-hover:scale-110 transition-transform duration-300 z-10 overflow-hidden">
           {p.foto_url
-            ? <img src={p.foto_url} alt={p.nama} className="w-full h-full object-cover" />
+            ? <img src={getMediaUrl(p.foto_url)} alt={p.nama} className="w-full h-full object-cover" />
             : <span className="text-white font-black text-2xl">{inisial}</span>
           }
         </div>
@@ -28,7 +28,7 @@ function Card({ p, size = 'md' }) {
       <div className="flex flex-col items-center group">
         <div className="w-14 h-14 rounded-full bg-gradient-to-br from-slate-500 to-slate-700 border-2 border-white flex items-center justify-center shadow-md shadow-slate-500/20 group-hover:scale-110 transition-transform duration-300 z-10 overflow-hidden">
           {p.foto_url
-            ? <img src={p.foto_url} alt={p.nama} className="w-full h-full object-cover" />
+            ? <img src={getMediaUrl(p.foto_url)} alt={p.nama} className="w-full h-full object-cover" />
             : <span className="text-white font-bold text-sm">{inisial}</span>
           }
         </div>
@@ -45,7 +45,7 @@ function Card({ p, size = 'md' }) {
     <div className="flex flex-col items-center group">
       <div className="w-16 h-16 rounded-full bg-gradient-to-br from-blue-600 to-indigo-800 border-2 border-white flex items-center justify-center shadow-md shadow-blue-500/20 group-hover:scale-110 transition-transform duration-300 z-10 overflow-hidden">
         {p.foto_url
-          ? <img src={p.foto_url} alt={p.nama} className="w-full h-full object-cover" />
+          ? <img src={getMediaUrl(p.foto_url)} alt={p.nama} className="w-full h-full object-cover" />
           : <span className="text-white font-bold text-lg">{inisial}</span>
         }
       </div>

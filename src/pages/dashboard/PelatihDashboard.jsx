@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useAuth } from '../../context/AuthContext'
 import { useNavigate } from 'react-router-dom'
-import api from '../../api/axios'
+import api, { MEDIA_URL } from '../../api/axios'
 import { formatTanggal } from '../../utils/helpers'
 
 // ── Tab Profil ────────────────────────────────────────────────
@@ -405,7 +405,7 @@ function TabSertifikat({ role }) {
             <div key={s.id} className="bg-white rounded-2xl overflow-hidden border border-slate-100 shadow-sm hover:shadow-soft transition-all group">
               <div className="relative h-40 bg-slate-100 overflow-hidden">
                 {isImage(s.file_url) ? (
-                  <img src={`http://localhost:5000${s.file_url}`} alt={s.judul}
+                  <img src={`${MEDIA_URL}${s.file_url}`} alt={s.judul}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
                 ) : (
                   <div className="w-full h-full flex flex-col items-center justify-center gap-2 text-slate-400">
@@ -420,7 +420,7 @@ function TabSertifikat({ role }) {
               <div className="p-4">
                 <p className="text-sm font-bold text-slate-900 mb-4 line-clamp-2 leading-snug">{s.judul}</p>
                 <div className="flex gap-2 mt-auto">
-                  <a href={`http://localhost:5000${s.file_url}`} target="_blank" rel="noreferrer"
+                  <a href={`${MEDIA_URL}${s.file_url}`} target="_blank" rel="noreferrer"
                     className="flex-1 text-xs font-bold text-center py-2 bg-brand-50 text-brand-600 hover:bg-brand-100 rounded-lg transition-colors">
                     Lihat
                   </a>

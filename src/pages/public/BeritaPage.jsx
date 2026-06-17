@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useBerita } from '../../context/BeritaContext'
 import { formatTanggal } from '../../utils/helpers'
+import { getMediaUrl } from '../../api/axios'
 
 export default function BeritaPage() {
   const { beritaPublished } = useBerita()
@@ -79,7 +80,7 @@ export default function BeritaPage() {
               >
                 <div className={`relative h-64 lg:h-full min-h-[300px] rounded-2xl overflow-hidden ${displayed[0].foto_url ? '' : 'bg-gradient-to-br from-brand-600 to-rose-900'}`}>
                   {displayed[0].foto_url ? (
-                    <img src={displayed[0].foto_url} alt={displayed[0].judul} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out" />
+                    <img src={getMediaUrl(displayed[0].foto_url)} alt={displayed[0].judul} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out" />
                   ) : (
                     <div className="absolute inset-0 flex items-center justify-center">
                       <svg className="w-20 h-20 text-white/20" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -122,7 +123,7 @@ export default function BeritaPage() {
                     className="group flex flex-col cursor-pointer bg-white rounded-3xl p-3 shadow-soft border border-slate-100 hover:shadow-glow hover:-translate-y-1 transition-all duration-300">
                     <div className={`relative h-48 rounded-2xl overflow-hidden mb-4 ${b.foto_url ? '' : 'bg-gradient-to-br from-slate-700 to-slate-900'}`}>
                       {b.foto_url ? (
-                        <img src={b.foto_url} alt={b.judul} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out"/>
+                        <img src={getMediaUrl(b.foto_url)} alt={b.judul} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out"/>
                       ) : (
                         <div className="absolute inset-0 flex items-center justify-center">
                           <svg className="w-12 h-12 text-white/20" fill="none" viewBox="0 0 24 24" stroke="currentColor">

@@ -141,7 +141,7 @@ router.post('/pengurus', ...guard, (req, res, next) => {
     const { nama, jabatan, quotes, order_num, periode, level, parent_id } = req.body
     if (!nama || !jabatan) return res.status(400).json({ success: false, message: 'Nama dan jabatan wajib.' })
     const id = uuid()
-    const foto_url = req.file ? `http://localhost:5000/uploads/pengurus/${req.file.filename}` : null
+    const foto_url = req.file ? `/uploads/pengurus/${req.file.filename}` : null
     await db.query('INSERT INTO pengurus (id,nama,jabatan,quotes,foto_url,order_num,periode,level,parent_id) VALUES (?,?,?,?,?,?,?,?,?)', 
       [id,nama,jabatan,quotes||null,foto_url,order_num||0,periode||'2022-2026',level||2,parent_id||null])
     res.status(201).json({ success: true, id, foto_url })
@@ -155,7 +155,7 @@ router.put('/pengurus/:id', ...guard, (req, res, next) => {
     const { nama, jabatan, quotes, order_num, periode, level, parent_id } = req.body
     const id = req.params.id
     if (req.file) {
-      const foto_url = `http://localhost:5000/uploads/pengurus/${req.file.filename}`
+      const foto_url = `/uploads/pengurus/${req.file.filename}`
       await db.query('UPDATE pengurus SET nama=?,jabatan=?,quotes=?,foto_url=?,order_num=?,periode=?,level=?,parent_id=? WHERE id=?', 
         [nama,jabatan,quotes||null,foto_url,order_num||0,periode||'2022-2026',level||2,parent_id||null,id])
     } else {
@@ -208,7 +208,7 @@ router.post('/upload-galeri', ...guard, (req, res, next) => {
   next()
 }, upload.single('file'), (req, res) => {
   if (!req.file) return res.status(400).json({ success: false, message: 'Tidak ada file yang diupload.' })
-  const url = `http://localhost:5000/uploads/galeri/${req.file.filename}`
+  const url = `/uploads/galeri/${req.file.filename}`
   res.json({ success: true, url })
 })
 
@@ -218,7 +218,7 @@ router.post('/upload-berita', ...guard, (req, res, next) => {
   next()
 }, upload.single('file'), (req, res) => {
   if (!req.file) return res.status(400).json({ success: false, message: 'Tidak ada file yang diupload.' })
-  const url = `http://localhost:5000/uploads/berita/${req.file.filename}`
+  const url = `/uploads/berita/${req.file.filename}`
   res.json({ success: true, url })
 })
 
@@ -228,7 +228,7 @@ router.post('/upload-pengumuman', ...guard, (req, res, next) => {
   next()
 }, upload.single('file'), (req, res) => {
   if (!req.file) return res.status(400).json({ success: false, message: 'Tidak ada file yang diupload.' })
-  const url = `http://localhost:5000/uploads/pengumuman/${req.file.filename}`
+  const url = `/uploads/pengumuman/${req.file.filename}`
   res.json({ success: true, url })
 })
 

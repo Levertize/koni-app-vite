@@ -28,5 +28,9 @@ app.use((err, req, res, next) => {
 })
 
 const PORT = process.env.PORT || 5000
-// [PRESENTASI: ORANG 1] 4. Server berjalan di port 5000 terpisah dari frontend
-app.listen(PORT, () => console.log(`Server running on http://localhost:${PORT}`))
+if (require.main === module) {
+  // [PRESENTASI: ORANG 1] 4. Server berjalan di port 5000 terpisah dari frontend
+  app.listen(PORT, () => console.log(`Server running on http://localhost:${PORT}`))
+}
+
+module.exports = app
