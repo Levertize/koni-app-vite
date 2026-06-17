@@ -37,3 +37,4 @@ dummy.md
 koni-backend/.env
 koni-backend/database/koni_banyumas_postgres.sql
 koni-backend/database/koni_banyumas.sql
+.vercel
