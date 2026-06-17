@@ -33,7 +33,7 @@ router.get('/pertandingan', ...guard, async (req, res, next) => {
       LEFT JOIN cabor c ON pt.cabor_id = c.id WHERE pt.wasit_id = ?
     `
     const params = [req.user.ref_id]
-    if (bulan) { sql += " AND TO_CHAR(pt.tanggal, 'YYYY-MM') = ?"; params.push(bulan) }
+    if (bulan) { sql += " AND DATE_FORMAT(pt.tanggal, '%Y-%m') = ?"; params.push(bulan) }
     sql += ' ORDER BY pt.tanggal DESC'
     const [rows] = await db.query(sql, params)
     res.json({ success: true, data: rows })
