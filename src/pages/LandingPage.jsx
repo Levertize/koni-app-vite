@@ -5,6 +5,7 @@ import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { useGSAP } from '@gsap/react'
 import { Draggable } from 'gsap/Draggable'
+import { Compass, Target, Users, Activity, Trophy, Award } from 'lucide-react'
 // Konten publik tetap dari Context (localStorage dikelola admin)
 import { useBerita } from '../context/BeritaContext'
 import { usePengumuman } from '../context/PengumumanContext'
@@ -149,6 +150,7 @@ export default function LandingPage() {
         y: 15,
         stagger: 0.1,
         duration: 0.6,
+        clearProps: "all",
       }, "-=0.5")
       .from(".hero-scroll-indicator", {
         autoAlpha: 0,
@@ -261,6 +263,7 @@ export default function LandingPage() {
       stagger: 0.15,
       duration: 0.8,
       ease: "power3.out",
+      clearProps: "all",
       scrollTrigger: {
         trigger: visiMisiRef.current.querySelector('.vm-grid') || visiMisiRef.current,
         start: "top 85%",
@@ -481,10 +484,10 @@ export default function LandingPage() {
               Sistem Informasi terpadu untuk pembinaan dan pengembangan olahraga prestasi menuju kejayaan Banyumas di tingkat regional dan nasional.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <Link to="/kegiatan" className="hero-cta w-full sm:w-auto px-8 py-4 bg-brand-600 hover:bg-brand-500 hover:shadow-glow text-white font-bold rounded-2xl transition-all duration-300 transform hover:-translate-y-1">
+              <Link to="/kegiatan" className="hero-cta w-full sm:w-auto px-8 py-4 bg-brand-600 hover:bg-brand-500 hover:shadow-glow text-white font-bold rounded-2xl transition-[background-color,color,border-color,box-shadow,transform] duration-300 hover:-translate-y-1">
                 Lihat Event Terbaru
               </Link>
-              <Link to="/berita" className="hero-cta w-full sm:w-auto px-8 py-4 bg-white text-slate-700 hover:text-brand-600 font-bold rounded-2xl border border-slate-200 hover:border-brand-200 shadow-sm transition-all duration-300">
+              <Link to="/berita" className="hero-cta w-full sm:w-auto px-8 py-4 bg-white text-slate-700 hover:text-brand-600 font-bold rounded-2xl border border-slate-200 hover:border-brand-200 shadow-sm transition-[background-color,color,border-color,box-shadow,transform] duration-300 hover:-translate-y-1">
                 Baca Berita
               </Link>
             </div>
@@ -574,50 +577,49 @@ export default function LandingPage() {
       </section>
 
       {/* ── VISI & MISI ── */}
-      <section ref={visiMisiRef} className="relative bg-white py-28 md:py-36 overflow-hidden border-t border-slate-100">
-        <div className="relative max-w-6xl mx-auto px-4 z-10">
-          <div className="vm-header text-center mb-16">
-            <div className="inline-flex items-center gap-3 text-slate-400 text-xs font-bold uppercase tracking-[0.2em] mb-3">
-              <span className="w-8 h-px bg-slate-300"></span>
-              <span>PRINSIP & TUJUAN</span>
-              <span className="w-8 h-px bg-slate-300"></span>
-            </div>
-            <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900 tracking-tight">
-              Visi & Misi Organisasi
-            </h2>
-            <p className="text-sm text-slate-500 mt-2 max-w-lg mx-auto">
-              Arah kebijakan dan komitmen nyata KONI Kabupaten Banyumas dalam jangka panjang.
-            </p>
+      <section ref={visiMisiRef} className="relative bg-slate-50/30 py-24 md:py-32 border-t border-b border-slate-100">
+        <div className="relative max-w-6xl mx-auto px-6 z-10">
+          
+          {/* Section Header */}
+          <div className="vm-header text-center mb-16 md:mb-20">
+            <span className="text-xs font-bold text-slate-400 uppercase tracking-[0.2em] block mb-2">Prinsip & Tujuan</span>
+            <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900 tracking-tight">Visi & Misi Organisasi</h2>
+            <div className="w-12 h-0.5 bg-slate-200 mx-auto mt-4"></div>
           </div>
 
-          <div className="vm-grid grid md:grid-cols-2 gap-8">
-            <div className="vm-card bg-white rounded-3xl p-10 md:p-12 border border-slate-100 shadow-sm transition-all duration-300 relative overflow-hidden">
-              <div className="flex flex-col md:flex-row gap-6 items-start">
-                <div className="w-16 h-16 rounded-2xl border border-slate-100 bg-slate-50/50 flex items-center justify-center flex-shrink-0">
-                  <img src="/visi_icon.png" alt="Visi Icon" className="w-10 h-10 object-contain" />
+          {/* Grid Layout */}
+          <div className="vm-grid grid md:grid-cols-2 gap-8 lg:gap-12">
+            
+            {/* Visi Card */}
+            <div className="vm-card bg-white rounded-3xl p-8 md:p-10 border border-slate-100 shadow-sm hover:shadow-soft hover:border-slate-200 transition-all duration-300">
+              <div className="flex flex-col sm:flex-row gap-5 items-start">
+                <div className="w-12 h-12 rounded-full bg-slate-50 flex items-center justify-center flex-shrink-0 border border-slate-100/50">
+                  <Compass className="w-5 h-5 text-slate-500" strokeWidth={1.5} />
                 </div>
                 <div>
-                  <span className="text-[10px] font-bold text-slate-400 uppercase tracking-[0.25em] block mb-2">VISI</span>
-                  <p className="text-base md:text-lg font-semibold text-slate-700 leading-relaxed">
+                  <span className="text-xs font-bold text-slate-400 uppercase tracking-widest block mb-2">Visi</span>
+                  <p className="text-base md:text-lg text-slate-600 leading-relaxed font-normal">
                     Membangun tata kelola pembinaan olahraga prestasi yang profesional, transparan, dan berkelanjutan menuju kejayaan daerah.
                   </p>
                 </div>
               </div>
             </div>
 
-            <div className="vm-card bg-white rounded-3xl p-10 md:p-12 border border-slate-100 shadow-sm transition-all duration-300 relative overflow-hidden">
-              <div className="flex flex-col md:flex-row gap-6 items-start">
-                <div className="w-16 h-16 rounded-2xl border border-slate-100 bg-slate-50/50 flex items-center justify-center flex-shrink-0">
-                  <img src="/misi_icon.png" alt="Misi Icon" className="w-10 h-10 object-contain" />
+            {/* Misi Card */}
+            <div className="vm-card bg-white rounded-3xl p-8 md:p-10 border border-slate-100 shadow-sm hover:shadow-soft hover:border-slate-200 transition-all duration-300">
+              <div className="flex flex-col sm:flex-row gap-5 items-start">
+                <div className="w-12 h-12 rounded-full bg-slate-50 flex items-center justify-center flex-shrink-0 border border-slate-100/50">
+                  <Target className="w-5 h-5 text-slate-500" strokeWidth={1.5} />
                 </div>
                 <div>
-                  <span className="text-[10px] font-bold text-slate-400 uppercase tracking-[0.25em] block mb-2">MISI</span>
-                  <p className="text-base md:text-lg font-semibold text-slate-700 leading-relaxed">
+                  <span className="text-xs font-bold text-slate-400 uppercase tracking-widest block mb-2">Misi</span>
+                  <p className="text-base md:text-lg text-slate-600 leading-relaxed font-normal">
                     Meningkatkan kualitas SDM kepelatihan, sarana prasarana penunjang, serta menyelenggarakan kompetisi berjenjang secara masif.
                   </p>
                 </div>
               </div>
             </div>
+
           </div>
         </div>
       </section>
@@ -646,57 +648,31 @@ export default function LandingPage() {
                   value: stats.totalAtlet,
                   label: 'Atlet Aktif',
                   desc: 'Terdaftar & Dibina',
-                  icon: (
-                    <svg className="stat-icon w-8 h-8 text-slate-700 mb-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                      <circle cx="15" cy="4" r="2" />
-                      <path d="M7 20h4l1.5-6H10l1-4h3.5" />
-                      <path d="m17 10-2-3-3 1.5" />
-                      <path d="M15 14l2 5h3" />
-                    </svg>
-                  )
+                  icon: <Users className="stat-icon w-5 h-5 text-slate-600" strokeWidth={1.5} />
                 },
                 {
                   value: stats.totalCabor,
                   label: 'Cabang Olahraga',
                   desc: 'Naungan Resmi',
-                  icon: (
-                    <svg className="stat-icon w-8 h-8 text-slate-700 mb-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                      <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-                      <path d="M12 6v11" />
-                      <path d="M8.5 12h7" />
-                    </svg>
-                  )
+                  icon: <Activity className="stat-icon w-5 h-5 text-slate-600" strokeWidth={1.5} />
                 },
                 {
                   value: stats.totalMedali,
                   label: 'Total Medali',
                   desc: 'Prestasi Kumulatif',
-                  icon: (
-                    <svg className="stat-icon w-8 h-8 text-slate-700 mb-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                      <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6" />
-                      <path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18" />
-                      <path d="M4 22h16" />
-                      <path d="M10 14.66V17c0 .55-.45 1-1 1H4v2h16v-2h-5c-.55 0-1-.45-1-1v-2.34" />
-                      <path d="M12 2a5 5 0 0 0-5 5v3c0 2.2 1.8 4 4 4h2c2.2 0 4-1.8 4-4V7a5 5 0 0 0-5-5z" />
-                    </svg>
-                  )
+                  icon: <Trophy className="stat-icon w-5 h-5 text-slate-600" strokeWidth={1.5} />
                 },
                 {
                   value: stats.medaliEmas,
                   label: 'Medali Emas',
                   desc: 'Peringkat Utama',
-                  icon: (
-                    <svg className="stat-icon w-8 h-8 text-slate-700 mb-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                      <circle cx="12" cy="8" r="7" />
-                      <path d="M8.21 13.89 7 23l5-3 5 3-1.21-9.12" />
-                      <path d="M12 5v6" />
-                      <path d="M9 8h6" />
-                    </svg>
-                  )
+                  icon: <Award className="stat-icon w-5 h-5 text-slate-600" strokeWidth={1.5} />
                 },
               ].map((s, i) => (
-                <div key={s.label} className="stat-item flex flex-col items-center md:items-start group cursor-default">
-                  {s.icon}
+                <div key={s.label} className="stat-item flex flex-col items-center text-center group cursor-default">
+                  <div className="w-12 h-12 rounded-full bg-white flex items-center justify-center border border-slate-100/80 shadow-sm mb-4 group-hover:border-slate-200 transition-colors duration-300">
+                    {s.icon}
+                  </div>
                   <p className="text-5xl md:text-6xl font-extrabold text-slate-900 tracking-tighter mb-2">
                     <AnimatedCounter value={s.value} duration={1.8 + i * 0.2} />
                   </p>
