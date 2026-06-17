@@ -34,3 +34,6 @@ dummy.md
 .agents/skills/gsap-scrolltrigger/SKILL.md
 .agents/skills/gsap-timeline/SKILL.md
 .agents/skills/gsap-utils/SKILL.md
+koni-backend/.env
+koni-backend/database/koni_banyumas_postgres.sql
+koni-backend/database/koni_banyumas.sql

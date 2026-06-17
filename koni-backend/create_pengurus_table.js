@@ -10,7 +10,7 @@ async function createTable() {
       foto_url VARCHAR(255),
       order_num INT DEFAULT 0,
       created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-    ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+    );
   `;
 
   try {

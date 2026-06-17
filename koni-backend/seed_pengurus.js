@@ -11,9 +11,9 @@ async function seedPengurus() {
       await db.query(
         `INSERT INTO pengurus (id, nama, jabatan, periode, level, parent_id, order_num)
          VALUES (?, ?, ?, ?, ?, ?, ?)
-         ON DUPLICATE KEY UPDATE 
-         nama=VALUES(nama), jabatan=VALUES(jabatan), periode=VALUES(periode),
-         level=VALUES(level), parent_id=VALUES(parent_id), order_num=VALUES(order_num)`,
+         ON CONFLICT (id) DO UPDATE SET 
+         nama=EXCLUDED.nama, jabatan=EXCLUDED.jabatan, periode=EXCLUDED.periode,
+         level=EXCLUDED.level, parent_id=EXCLUDED.parent_id, order_num=EXCLUDED.order_num`,
         [p.id, p.nama, p.jabatan, p.periode || '2022-2026', p.level || 2, p.parent_id || null, p.urutan || 99]
       );
     }

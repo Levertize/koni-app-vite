@@ -2,10 +2,10 @@
 -- version 5.2.3
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Waktu pembuatan: 17 Jun 2026 pada 00.24
--- Versi server: 8.0.30
--- Versi PHP: 8.1.10
+-- Host: localhost:3306
+-- Generation Time: Jun 17, 2026 at 03:10 PM
+-- Server version: 8.0.30
+-- PHP Version: 8.1.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Basis data: `koni_banyumas`
+-- Database: `koni_banyumas`
 --
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `atlet`
+-- Table structure for table `atlet`
 --
 
 CREATE TABLE `atlet` (
@@ -43,7 +43,7 @@ CREATE TABLE `atlet` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
--- Dumping data untuk tabel `atlet`
+-- Dumping data for table `atlet`
 --
 
 INSERT INTO `atlet` (`id`, `nik`, `nama`, `tempat_lahir`, `tanggal_lahir`, `jenis_kelamin`, `alamat`, `no_hp`, `foto`, `cabor_id`, `status`, `created_at`) VALUES
@@ -71,7 +71,7 @@ INSERT INTO `atlet` (`id`, `nik`, `nama`, `tempat_lahir`, `tanggal_lahir`, `jeni
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `cabor`
+-- Table structure for table `cabor`
 --
 
 CREATE TABLE `cabor` (
@@ -84,7 +84,7 @@ CREATE TABLE `cabor` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
--- Dumping data untuk tabel `cabor`
+-- Dumping data for table `cabor`
 --
 
 INSERT INTO `cabor` (`id`, `nama`, `induk`, `singkatan`, `status`, `created_at`) VALUES
@@ -114,7 +114,7 @@ INSERT INTO `cabor` (`id`, `nama`, `induk`, `singkatan`, `status`, `created_at`)
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `pelatih`
+-- Table structure for table `pelatih`
 --
 
 CREATE TABLE `pelatih` (
@@ -135,7 +135,7 @@ CREATE TABLE `pelatih` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
--- Dumping data untuk tabel `pelatih`
+-- Dumping data for table `pelatih`
 --
 
 INSERT INTO `pelatih` (`id`, `nik`, `nama`, `tempat_lahir`, `tanggal_lahir`, `jenis_kelamin`, `alamat`, `no_hp`, `foto`, `cabor_id`, `kategori`, `grade`, `status`, `created_at`) VALUES
@@ -154,7 +154,42 @@ INSERT INTO `pelatih` (`id`, `nik`, `nama`, `tempat_lahir`, `tanggal_lahir`, `je
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `pertandingan`
+-- Table structure for table `pengurus`
+--
+
+CREATE TABLE `pengurus` (
+  `id` varchar(36) NOT NULL,
+  `nama` varchar(150) NOT NULL,
+  `jabatan` varchar(100) NOT NULL,
+  `quotes` text,
+  `foto_url` varchar(255) DEFAULT NULL,
+  `order_num` int DEFAULT '0',
+  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `periode` varchar(50) DEFAULT NULL,
+  `level` int DEFAULT '2',
+  `parent_id` varchar(36) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `pengurus`
+--
+
+INSERT INTO `pengurus` (`id`, `nama`, `jabatan`, `quotes`, `foto_url`, `order_num`, `created_at`, `periode`, `level`, `parent_id`) VALUES
+('pngs-001', 'H. Slamet Riyadi, S.H., M.Hum.', 'Ketua Umum', NULL, 'http://localhost:5000/uploads/pengurus/1781684155137-pu0a5.jpg', 1, '2026-06-17 08:14:50', '2022-2026', 1, NULL),
+('pngs-002', 'Drs. Bambang Supriyanto, M.Pd.', 'Wakil Ketua I', NULL, NULL, 2, '2026-06-17 08:14:50', '2022-2026', 2, 'pngs-001'),
+('pngs-003', 'Ir. Hendra Gunawan, M.T.', 'Wakil Ketua II', NULL, NULL, 3, '2026-06-17 08:14:50', '2022-2026', 2, 'pngs-001'),
+('pngs-004', 'Drs. Ahmad Fauzi, M.Si.', 'Sekretaris Umum', NULL, NULL, 4, '2026-06-17 08:14:50', '2022-2026', 3, 'pngs-001'),
+('pngs-005', 'Triani Budi Lestari, S.E.', 'Wakil Sekretaris Umum', NULL, NULL, 5, '2026-06-17 08:14:50', '2022-2026', 3, 'pngs-001'),
+('pngs-006', 'Agus Priyono, S.E.', 'Bendahara Umum', NULL, NULL, 6, '2026-06-17 08:14:50', '2022-2026', 3, 'pngs-001'),
+('pngs-007', 'Sri Wahyuni, S.Or.', 'Kabid Pembinaan & Prestasi', NULL, NULL, 7, '2026-06-17 08:14:50', '2022-2026', 4, 'pngs-002'),
+('pngs-008', 'Budi Santoso, S.Pd.', 'Kabid Organisasi', NULL, NULL, 8, '2026-06-17 08:14:50', '2022-2026', 4, 'pngs-002'),
+('pngs-009', 'Dwi Cahyono, S.Pd.', 'Kabid Litbang', NULL, NULL, 9, '2026-06-17 08:14:50', '2022-2026', 4, 'pngs-003'),
+('pngs-010', 'Nurul Hidayah, S.Pd.', 'Kabid Humas & Protokol', NULL, NULL, 10, '2026-06-17 08:14:50', '2022-2026', 4, 'pngs-003');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `pertandingan`
 --
 
 CREATE TABLE `pertandingan` (
@@ -171,7 +206,7 @@ CREATE TABLE `pertandingan` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `presensi`
+-- Table structure for table `presensi`
 --
 
 CREATE TABLE `presensi` (
@@ -184,7 +219,7 @@ CREATE TABLE `presensi` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
--- Dumping data untuk tabel `presensi`
+-- Dumping data for table `presensi`
 --
 
 INSERT INTO `presensi` (`id`, `program_latihan_id`, `atlet_id`, `status`, `keterangan`, `created_at`) VALUES
@@ -195,7 +230,7 @@ INSERT INTO `presensi` (`id`, `program_latihan_id`, `atlet_id`, `status`, `keter
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `prestasi`
+-- Table structure for table `prestasi`
 --
 
 CREATE TABLE `prestasi` (
@@ -215,7 +250,7 @@ CREATE TABLE `prestasi` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
--- Dumping data untuk tabel `prestasi`
+-- Dumping data for table `prestasi`
 --
 
 INSERT INTO `prestasi` (`id`, `atlet_id`, `cabor_id`, `nama_kejuaraan`, `nomor_lomba`, `grade`, `tahun`, `hasil`, `medali`, `penyelenggara`, `lokasi`, `foto_piagam`, `created_at`) VALUES
@@ -238,7 +273,7 @@ INSERT INTO `prestasi` (`id`, `atlet_id`, `cabor_id`, `nama_kejuaraan`, `nomor_l
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `program_latihan`
+-- Table structure for table `program_latihan`
 --
 
 CREATE TABLE `program_latihan` (
@@ -254,7 +289,7 @@ CREATE TABLE `program_latihan` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
--- Dumping data untuk tabel `program_latihan`
+-- Dumping data for table `program_latihan`
 --
 
 INSERT INTO `program_latihan` (`id`, `pelatih_id`, `cabor_id`, `judul`, `deskripsi`, `tanggal`, `durasi_menit`, `lokasi`, `created_at`) VALUES
@@ -263,7 +298,7 @@ INSERT INTO `program_latihan` (`id`, `pelatih_id`, `cabor_id`, `judul`, `deskrip
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `sertifikat`
+-- Table structure for table `sertifikat`
 --
 
 CREATE TABLE `sertifikat` (
@@ -280,7 +315,7 @@ CREATE TABLE `sertifikat` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `users`
+-- Table structure for table `users`
 --
 
 CREATE TABLE `users` (
@@ -293,7 +328,7 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
--- Dumping data untuk tabel `users`
+-- Dumping data for table `users`
 --
 
 INSERT INTO `users` (`id`, `username`, `password_hash`, `role`, `ref_id`, `created_at`) VALUES
@@ -320,7 +355,7 @@ INSERT INTO `users` (`id`, `username`, `password_hash`, `role`, `ref_id`, `creat
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `wasit`
+-- Table structure for table `wasit`
 --
 
 CREATE TABLE `wasit` (
@@ -341,7 +376,7 @@ CREATE TABLE `wasit` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
--- Dumping data untuk tabel `wasit`
+-- Dumping data for table `wasit`
 --
 
 INSERT INTO `wasit` (`id`, `nik`, `nama`, `tempat_lahir`, `tanggal_lahir`, `jenis_kelamin`, `alamat`, `no_hp`, `foto`, `cabor_id`, `lisensi`, `grade`, `status`, `created_at`) VALUES
@@ -352,31 +387,37 @@ INSERT INTO `wasit` (`id`, `nik`, `nama`, `tempat_lahir`, `tanggal_lahir`, `jeni
 ('was-005', '3302019009900001', 'Rian Hidayat', 'Purwokerto', '1990-09-19', 'L', 'Jl. Diponegoro No. 12, Purwokerto Barat', '082198760005', NULL, 'cabor-005', 'WAS-D-005', 'daerah', 'aktif', '2026-04-26');
 
 --
--- Indeks untuk tabel yang dibuang
+-- Indexes for dumped tables
 --
 
 --
--- Indeks untuk tabel `atlet`
+-- Indexes for table `atlet`
 --
 ALTER TABLE `atlet`
   ADD PRIMARY KEY (`id`),
   ADD KEY `cabor_id` (`cabor_id`);
 
 --
--- Indeks untuk tabel `cabor`
+-- Indexes for table `cabor`
 --
 ALTER TABLE `cabor`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `pelatih`
+-- Indexes for table `pelatih`
 --
 ALTER TABLE `pelatih`
   ADD PRIMARY KEY (`id`),
   ADD KEY `cabor_id` (`cabor_id`);
 
 --
--- Indeks untuk tabel `pertandingan`
+-- Indexes for table `pengurus`
+--
+ALTER TABLE `pengurus`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `pertandingan`
 --
 ALTER TABLE `pertandingan`
   ADD PRIMARY KEY (`id`),
@@ -385,7 +426,7 @@ ALTER TABLE `pertandingan`
   ADD KEY `idx_pertandingan_tgl` (`tanggal`);
 
 --
--- Indeks untuk tabel `presensi`
+-- Indexes for table `presensi`
 --
 ALTER TABLE `presensi`
   ADD PRIMARY KEY (`id`),
@@ -394,7 +435,7 @@ ALTER TABLE `presensi`
   ADD KEY `idx_presensi_atlet` (`atlet_id`);
 
 --
--- Indeks untuk tabel `prestasi`
+-- Indexes for table `prestasi`
 --
 ALTER TABLE `prestasi`
   ADD PRIMARY KEY (`id`),
@@ -402,7 +443,7 @@ ALTER TABLE `prestasi`
   ADD KEY `idx_prestasi_atlet` (`atlet_id`);
 
 --
--- Indeks untuk tabel `program_latihan`
+-- Indexes for table `program_latihan`
 --
 ALTER TABLE `program_latihan`
   ADD PRIMARY KEY (`id`),
@@ -411,72 +452,72 @@ ALTER TABLE `program_latihan`
   ADD KEY `idx_program_tanggal` (`tanggal`);
 
 --
--- Indeks untuk tabel `sertifikat`
+-- Indexes for table `sertifikat`
 --
 ALTER TABLE `sertifikat`
   ADD PRIMARY KEY (`id`),
   ADD KEY `idx_sertifikat_owner` (`owner_id`,`owner_type`);
 
 --
--- Indeks untuk tabel `users`
+-- Indexes for table `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `username` (`username`);
 
 --
--- Indeks untuk tabel `wasit`
+-- Indexes for table `wasit`
 --
 ALTER TABLE `wasit`
   ADD PRIMARY KEY (`id`),
   ADD KEY `cabor_id` (`cabor_id`);
 
 --
--- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
+-- Constraints for dumped tables
 --
 
 --
--- Ketidakleluasaan untuk tabel `atlet`
+-- Constraints for table `atlet`
 --
 ALTER TABLE `atlet`
   ADD CONSTRAINT `atlet_ibfk_1` FOREIGN KEY (`cabor_id`) REFERENCES `cabor` (`id`) ON DELETE SET NULL;
 
 --
--- Ketidakleluasaan untuk tabel `pelatih`
+-- Constraints for table `pelatih`
 --
 ALTER TABLE `pelatih`
   ADD CONSTRAINT `pelatih_ibfk_1` FOREIGN KEY (`cabor_id`) REFERENCES `cabor` (`id`) ON DELETE SET NULL;
 
 --
--- Ketidakleluasaan untuk tabel `pertandingan`
+-- Constraints for table `pertandingan`
 --
 ALTER TABLE `pertandingan`
   ADD CONSTRAINT `pertandingan_ibfk_1` FOREIGN KEY (`wasit_id`) REFERENCES `wasit` (`id`) ON DELETE CASCADE,
   ADD CONSTRAINT `pertandingan_ibfk_2` FOREIGN KEY (`cabor_id`) REFERENCES `cabor` (`id`) ON DELETE SET NULL;
 
 --
--- Ketidakleluasaan untuk tabel `presensi`
+-- Constraints for table `presensi`
 --
 ALTER TABLE `presensi`
   ADD CONSTRAINT `presensi_ibfk_1` FOREIGN KEY (`program_latihan_id`) REFERENCES `program_latihan` (`id`) ON DELETE CASCADE,
   ADD CONSTRAINT `presensi_ibfk_2` FOREIGN KEY (`atlet_id`) REFERENCES `atlet` (`id`) ON DELETE CASCADE;
 
 --
--- Ketidakleluasaan untuk tabel `prestasi`
+-- Constraints for table `prestasi`
 --
 ALTER TABLE `prestasi`
   ADD CONSTRAINT `prestasi_ibfk_1` FOREIGN KEY (`atlet_id`) REFERENCES `atlet` (`id`) ON DELETE CASCADE,
   ADD CONSTRAINT `prestasi_ibfk_2` FOREIGN KEY (`cabor_id`) REFERENCES `cabor` (`id`) ON DELETE SET NULL;
 
 --
--- Ketidakleluasaan untuk tabel `program_latihan`
+-- Constraints for table `program_latihan`
 --
 ALTER TABLE `program_latihan`
   ADD CONSTRAINT `program_latihan_ibfk_1` FOREIGN KEY (`pelatih_id`) REFERENCES `pelatih` (`id`) ON DELETE CASCADE,
   ADD CONSTRAINT `program_latihan_ibfk_2` FOREIGN KEY (`cabor_id`) REFERENCES `cabor` (`id`) ON DELETE SET NULL;
 
 --
--- Ketidakleluasaan untuk tabel `wasit`
+-- Constraints for table `wasit`
 --
 ALTER TABLE `wasit`
   ADD CONSTRAINT `wasit_ibfk_1` FOREIGN KEY (`cabor_id`) REFERENCES `cabor` (`id`) ON DELETE SET NULL;
@@ -485,21 +526,3 @@ COMMIT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
-
--- --------------------------------------------------------
-
---
--- Struktur dari tabel `pengurus`
---
-
-CREATE TABLE `pengurus` (
-  `id` varchar(36) NOT NULL,
-  `nama` varchar(150) NOT NULL,
-  `jabatan` varchar(100) NOT NULL,
-  `quotes` text,
-  `foto_url` varchar(255),
-  `order_num` int DEFAULT '0',
-  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
-ALTER TABLE `pengurus` ADD PRIMARY KEY (`id`);

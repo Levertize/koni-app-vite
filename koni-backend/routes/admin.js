@@ -9,7 +9,7 @@ const guard = [authenticate, authorize('admin')]
 async function createUserAccount(ref_id, role, username, password) {
   const hash = await bcrypt.hash(password, 10)
   await db.query(
-    'INSERT IGNORE INTO users (id,username,password_hash,role,ref_id) VALUES (?,?,?,?,?)',
+    'INSERT INTO users (id,username,password_hash,role,ref_id) VALUES (?,?,?,?,?) ON CONFLICT (username) DO NOTHING',
     [uuid(), username, hash, role, ref_id]
   )
 }

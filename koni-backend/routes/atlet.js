@@ -36,7 +36,7 @@ router.get('/jadwal-latihan', ...guard, async (req, res, next) => {
       WHERE pl.cabor_id = (SELECT cabor_id FROM atlet WHERE id = ?)
     `
     const params = [req.user.ref_id]
-    if (bulan) { sql += " AND DATE_FORMAT(pl.tanggal, '%Y-%m') = ?"; params.push(bulan) }
+    if (bulan) { sql += " AND TO_CHAR(pl.tanggal, 'YYYY-MM') = ?"; params.push(bulan) }
     sql += ' ORDER BY pl.tanggal DESC'
     const [rows] = await db.query(sql, params)
     res.json({ success: true, data: rows })
