@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useAuth } from '../../context/AuthContext'
 import { useNavigate } from 'react-router-dom'
-import api from '../../api/axios'
+import api, { MEDIA_URL } from '../../api/axios'
 import { formatTanggal } from '../../utils/helpers'
 
 function TabProfil({ profil }) {
@@ -292,7 +292,7 @@ function TabSertifikat() {
               <div key={s.id} className="bg-white rounded-2xl overflow-hidden border border-slate-100 shadow-sm hover:shadow-soft transition-all group">
                 <div className="relative h-40 bg-slate-100 overflow-hidden">
                   {isImage(s.file_url)
-                    ? <img src={`http://localhost:5000${s.file_url}`} alt={s.judul} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                    ? <img src={`${MEDIA_URL}${s.file_url}`} alt={s.judul} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
                     : <div className="w-full h-full flex flex-col items-center justify-center gap-2 text-slate-400"><svg className="w-12 h-12 mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg><span className="text-xs font-bold text-slate-500 uppercase tracking-wider">Dokumen PDF</span></div>
                   }
                   <div className="absolute top-2 right-2 bg-black/50 backdrop-blur-md px-2.5 py-1 rounded-full text-[10px] font-bold text-white uppercase tracking-wider">{s.tipe}</div>
@@ -300,7 +300,7 @@ function TabSertifikat() {
                 <div className="p-4">
                   <p className="text-sm font-bold text-slate-900 mb-4 line-clamp-2 leading-snug">{s.judul}</p>
                   <div className="flex gap-2 mt-auto">
-                    <a href={`http://localhost:5000${s.file_url}`} target="_blank" rel="noreferrer" className="flex-1 text-xs font-bold text-center py-2 bg-brand-50 text-brand-600 hover:bg-brand-100 rounded-lg transition-colors">Lihat</a>
+                    <a href={`${MEDIA_URL}${s.file_url}`} target="_blank" rel="noreferrer" className="flex-1 text-xs font-bold text-center py-2 bg-brand-50 text-brand-600 hover:bg-brand-100 rounded-lg transition-colors">Lihat</a>
                     <button onClick={()=>hapus(s.id)} className="flex-1 text-xs font-bold text-center py-2 bg-rose-50 text-rose-600 hover:bg-rose-100 rounded-lg transition-colors">Hapus</button>
                   </div>
                 </div>

@@ -1,7 +1,10 @@
 import axios from 'axios'
 
+const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
+const apiBaseURL = isLocal ? 'http://localhost:5000/api' : '/api'
+
 const api = axios.create({
-  baseURL: 'http://localhost:5000/api',
+  baseURL: apiBaseURL,
 })
 
 // [PRESENTASI: ORANG 2] Interceptor request — otomatis sisipkan token JWT ke setiap request
@@ -34,7 +37,9 @@ api.interceptors.response.use(
 
 // Instance khusus untuk public (tanpa auto-redirect)
 export const publicApi = axios.create({
-  baseURL: 'http://localhost:5000/api',
+  baseURL: apiBaseURL,
 })
+
+export const MEDIA_URL = isLocal ? 'http://localhost:5000' : ''
 
 export default api

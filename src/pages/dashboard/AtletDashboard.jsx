@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useAuth } from '../../context/AuthContext'
 import { useNavigate } from 'react-router-dom'
-import api from '../../api/axios'
+import api, { MEDIA_URL } from '../../api/axios'
 import { formatTanggal } from '../../utils/helpers'
 
 function TabProfil({ profil }) {
@@ -216,14 +216,14 @@ function TabSertifikat({ role }) {
           : list.map(s => (
             <div key={s.id} className="card overflow-hidden">
               {isImage(s.file_url)
-                ? <img src={`http://localhost:5000${s.file_url}`} alt={s.judul} className="w-full h-40 object-cover" />
+                ? <img src={`${MEDIA_URL}${s.file_url}`} alt={s.judul} className="w-full h-40 object-cover" />
                 : <div className="w-full h-40 bg-red-50 flex items-center justify-center"><svg className="w-10 h-10 text-red-300" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z" /></svg></div>
               }
               <div className="p-3">
                 <p className="text-sm font-semibold truncate">{s.judul}</p>
                 <p className="text-xs text-gray-400">{s.tipe}</p>
                 <div className="flex gap-2 mt-2">
-                  <a href={`http://localhost:5000${s.file_url}`} target="_blank" rel="noreferrer" className="flex-1 text-xs text-center py-1 bg-blue-50 text-blue-600 rounded-lg">Lihat</a>
+                  <a href={`${MEDIA_URL}${s.file_url}`} target="_blank" rel="noreferrer" className="flex-1 text-xs text-center py-1 bg-blue-50 text-blue-600 rounded-lg">Lihat</a>
                   <button onClick={() => hapus(s.id)} className="flex-1 text-xs text-center py-1 bg-red-50 text-red-500 rounded-lg">Hapus</button>
                 </div>
               </div>
