@@ -1,26 +1,25 @@
 
 <div align="center">
 
-
 <img src="koni.png" alt="KONI Logo" width="100" height="100" />
 
 # 🏅 KONI Kabupaten Banyumas
 ### Sistem Informasi Manajemen Olahraga Daerah
 
-[![React](https://img.shields.io/badge/React-18-61DAFB?style=flat-square&logo=react)](https://reactjs.org/)
-[![Vite](https://img.shields.io/badge/Vite-5-646CFF?style=flat-square&logo=vite)](https://vitejs.dev/)
-[![TailwindCSS](https://img.shields.io/badge/Tailwind-v4-38BDF8?style=flat-square&logo=tailwindcss)](https://tailwindcss.com/)
-[![React Router](https://img.shields.io/badge/React_Router-v6-CA4245?style=flat-square&logo=reactrouter)](https://reactrouter.com/)
+[![React](https://img.shields.io/badge/React-19.2-61DAFB?style=flat-square&logo=react)](https://reactjs.org/)
+[![Vite](https://img.shields.io/badge/Vite-8.0-646CFF?style=flat-square&logo=vite)](https://vitejs.dev/)
+[![TailwindCSS](https://img.shields.io/badge/Tailwind-v4.2-38BDF8?style=flat-square&logo=tailwindcss)](https://tailwindcss.com/)
+[![React Router](https://img.shields.io/badge/React_Router-v7.1-CA4245?style=flat-square&logo=reactrouter)](https://reactrouter.com/)
+[![GSAP](https://img.shields.io/badge/GSAP-v3.15-88CE02?style=flat-square&logo=greensock)](https://greensock.com/gsap/)
 [![License](https://img.shields.io/badge/License-MIT-green?style=flat-square)](LICENSE)
 
 **Tugas UAS · Pemrograman Web Lanjut · Universitas Muhammadiyah Purwokerto**
 
-[🌐 Demo](#) · [📋 Fitur](#-fitur-utama) · [🚀 Instalasi](#-instalasi) · [📁 Struktur](#-struktur-folder)
+[🌐 Demo](#) · [📋 Fitur](#-fitur-utama) · [🚀 Instalasi](#-instalasi) · [📁 Struktur](#-struktur-folder) · [✨ Animasi GSAP](#-animasi-interaktif-gsap)
 
 </div>
 
 ---
-
 
 ## 📖 Tentang Proyek
 
@@ -37,29 +36,31 @@ Sebelumnya, seluruh proses pencatatan data atlet, pelatih, kegiatan, hingga pres
 ### 🌐 Landing Page Publik
 | Fitur | Keterangan |
 |---|---|
-| **Ticker Pengumuman** | Teks berjalan otomatis, klik untuk baca detail |
+| **Ticker Pengumuman** | Teks berjalan otomatis, klik untuk baca detail pengumuman |
 | **Berita & Artikel** | Halaman list + detail dengan rich text content |
-| **Agenda Kegiatan** | Filter upcoming vs selesai, detail per event |
-| **Galeri Foto** | Grid dengan filter kategori + lightbox fullscreen |
+| **Agenda Kegiatan** | Filter kegiatan mendatang vs selesai, detail per event |
+| **Galeri Foto** | Grid galeri dengan filter kategori + lightbox fullscreen |
 | **Bagan Pengurus** | Struktur organisasi visual bertingkat (L1–L4) |
 | **Data Cabor** | 22+ cabang olahraga aktif KONI Banyumas |
+| **Animasi Imersif** | Efek scroll, drag, timeline, dan count-up bilangan menggunakan GSAP |
 
-### 🔒 Panel Admin
+### 🔒 Panel Admin (Dashboard CRUD)
 | Fitur | Keterangan |
 |---|---|
-| **CRUD Data Atlet** | Kelola biodata, cabor, status aktif/tidak aktif |
-| **CRUD Data Pelatih** | Kategori: Koordinator, Fisik, Teknik, Taktik |
-| **CRUD Data Cabor** | Lengkap dengan induk organisasi & toggle status |
-| **Rekap Prestasi** | Filter by grade: Daerah / Nasional / Internasional |
-| **Kelola Konten** | Publikasi berita, pengumuman, kegiatan, galeri |
-| **Rich Text Editor** | Quill.js dengan heading, bold, image, link, dll |
+| **CRUD Data Atlet** | Kelola biodata, cabor, status aktif/tidak aktif, pembuatan akun login |
+| **CRUD Data Pelatih** | Kategori pelatih (Koordinator, Fisik, Teknik, Taktik) & status |
+| **CRUD Data Wasit/Juri** | Kelola biodata, lisensi, grade wasit, & pembuatan akun login |
+| **CRUD Data Cabor** | Kelola nama cabor, induk organisasi, singkatan, & toggle status |
+| **Rekap Prestasi** | Filter prestasi by grade: Daerah / Nasional / Internasional, level medali |
+| **Kelola Konten** | Publikasi berita, pengumuman, agenda kegiatan, galeri foto, bagan pengurus |
+| **Rich Text Editor** | Terintegrasi Quill.js (heading, bold, image, link, text formatting) |
 
-### 👤 Dashboard Per Role
-| Role | Fitur |
+### 👤 Dashboard Per Role (User Access)
+| Role | Fitur Utama |
 |---|---|
-| **Pelatih** | Profil · Program latihan · Input presensi atlet · Upload sertifikat |
-| **Atlet** | Profil · Riwayat presensi · Prestasi & medali · Upload piagam |
-| **Wasit** | Profil · Input & riwayat pertandingan · Upload lisensi |
+| **Pelatih** | Profil · Program Latihan (Bulanan/Harian) · Input Presensi Atlet · Upload Sertifikat |
+| **Atlet** | Profil · Riwayat Presensi · Prestasi & Medali · Upload Piagam Penghargaan |
+| **Wasit** | Profil · Input & Riwayat Pertandingan Terpilih · Upload Lisensi Wasit (Gambar/PDF) |
 
 ---
 
@@ -67,266 +68,268 @@ Sebelumnya, seluruh proses pencatatan data atlet, pelatih, kegiatan, hingga pres
 
 ```
 Frontend
-├── React 18            → UI Framework
-├── Vite 5              → Build tool & dev server
-├── React Router v6     → Client-side routing
-├── Context API         → State management
-├── Tailwind CSS v4     → Utility-first styling
-├── Axios               → HTTP client
-└── Quill.js (CDN)      → Rich text editor
+├── React 19            → UI Library (terkini dengan Virtual DOM optimal)
+├── Vite 8              → Next-generation build tool & high-speed dev server
+├── React Router v7     → Client-side & nested routing, layout outlet
+├── Context API         → Global state management
+├── Tailwind CSS v4     → Engine styling utilitas super cepat dengan @tailwindcss/vite
+├── GSAP (GreenSock)    → Animasi performa tinggi untuk interaktivitas visual
+├── Axios               → HTTP client untuk komunikasi REST API (jwt request interceptor)
+└── Quill.js (CDN)      → Rich text editor untuk kelola konten admin
 
-Backend (Opsional / UAS)
+Backend (REST API)
 ├── Node.js + Express   → REST API server
-├── MySQL               → Database
-├── JWT                 → Autentikasi
-├── Multer              → File upload
-└── Bcrypt              → Password hashing
+├── MySQL (mysql2)      → Sistem database relasional dengan Connection Pool
+├── JWT (jsonwebtoken)  → Sistem keamanan token otentikasi
+├── Multer              → Middleware penanganan upload file
+└── Bcrypt              → Enkripsi password & secure hashing
 ```
+
+---
+
+## ✨ Animasi Interaktif (GSAP)
+
+Proyek ini memanfaatkan **GSAP (GreenSock Animation Platform)** dan `@gsap/react` untuk menciptakan visual landing page yang dinamis dan berkelas premium:
+
+1. **Count-Up Statistik (Landing Page Stats)**:
+   Angka total atlet, cabor, pelatih, dan wasit beranimasi bertambah secara dinamis dari `0` menuju nilai riil database menggunakan `gsap.to()` dengan custom counter ref.
+2. **ScrollTrigger Reveal**:
+   Setiap section pada halaman publik (Tentang KONI, Visi & Misi, Berita, Event, Galeri) akan muncul dengan transisi fade-in dan slide-up secara mulus saat digulir (scroll) ke viewport pengguna.
+3. **Hero Timelines**:
+   Menggunakan `gsap.timeline()` untuk menumpuk animasi elemen hero (logo, badge universitas, judul besar, deskripsi, dan tombol CTA) secara runtut saat halaman pertama kali dimuat (*on load*).
+4. **Draggable & Hover Micro-interactions**:
+   Animasi transisi halus pada kartu-kartu konten, quote ketua, slider, dan tombol aksi ketika diarahkan kursor (hover) maupun diinteraksikan.
 
 ---
 
 ## 🚀 Instalasi
 
 ### Prasyarat
-- Node.js versi 18 atau lebih baru
-- npm atau yarn
+- **Node.js** versi 18 atau lebih baru (direkomendasikan LTS)
+- **MySQL** Server (XAMPP / Laragon / MySQL Workbench)
+- **npm** (bawaan Node.js)
 
-### Frontend (Wajib)
+---
+
+### 💻 Frontend (Root Directory)
+
+Frontend React-Vite berada langsung pada **direktori root** proyek.
 
 ```bash
 # 1. Clone repository
 git clone https://github.com/username/koni-banyumas.git
 cd koni-banyumas
 
-# 2. Masuk ke folder frontend
-cd koni-app
-
-# 3. Install dependencies
+# 2. Install dependensi frontend (di direktori root)
 npm install
 
-# 4. Jalankan development server
+# 3. Jalankan development server
 npm run dev
 ```
 
-Buka browser di **http://localhost:5173**
+Buka browser pada **http://localhost:5173**
 
-### Backend (Opsional)
+---
+
+### ⚙️ Backend (Folder `koni-backend`)
+
+Backend API Express.js berada di dalam folder `koni-backend/`.
 
 ```bash
 # 1. Masuk ke folder backend
 cd koni-backend
 
-# 2. Install dependencies
+# 2. Install dependensi backend
 npm install
 
 # 3. Salin file environment
 cp .env.example .env
-# Edit .env → isi DB_PASSWORD sesuai MySQL kamu
+# Catatan Windows: copy .env.example .env
+# Buka file .env dan sesuaikan DB_PASSWORD dengan milik MySQL kamu.
 
-# 4. Import database
-# Buka phpMyAdmin → import file database/schema.sql
+# 4. Import Database
+# - Buka phpMyAdmin / MySQL client pilihanmu.
+# - Buat database baru bernama `koni_banyumas`.
+# - Import file sql dari path: `database/koni_banyumas.sql`
 
-# 5. Generate hash password admin
-node -e "require('bcrypt').hash('koni2024',10).then(console.log)"
-# Salin hasilnya → jalankan INSERT di schema.sql bagian SEED
+# 5. Jalankan Inisialisasi Tabel & Seeder Otomatis
+# Ini akan membuat tabel tambahan dan mengisi data awal (Cabor, Atlet, Pelatih, Wasit, Akun Login)
+node create_pengurus_table.js
+node seed.js
+node seed_pengurus.js
 
-# 6. Jalankan server
+# 6. Jalankan backend server
 npm run dev
 ```
 
-Server berjalan di **http://localhost:5000**
+Server backend berjalan di **http://localhost:5000**
 
 ---
 
 ## 📁 Struktur Folder
 
+Berikut adalah struktur folder terkini dari seluruh proyek:
+
 ```
-koni-app/
-├── public/
-│   └── logo.png                  ← Logo KONI (taruh di sini)
+koni-app-vite/ (Root - Frontend)
+├── public/                       ← Static assets (dapat diakses langsung)
+│   ├── favicon.svg               ← Icon tab browser
+│   ├── icons.svg                 ← Kumpulan icon SVG
+│   ├── logo_koni.png             ← Logo resmi KONI
+│   ├── misi_icon.png             ← Ilustrasi misi
+│   └── visi_icon.png             ← Ilustrasi visi
 │
-├── src/
+├── src/                          ← Source code frontend React
 │   ├── api/
-│   │   └── axios.js              ← Axios instance + interceptor JWT
+│   │   └── axios.js              ← Instance Axios + interceptor JWT token
 │   │
 │   ├── assets/
+│   │   └── hero.png              ← Banner landing page
 │   │
 │   ├── components/
 │   │   └── common/
-│   │       ├── AdminLayout.jsx   ← Layout dashboard admin
-│   │       ├── PublicLayout.jsx  ← Layout halaman publik
-│   │       ├── Badge.jsx         ← Badge status/grade/medali
-│   │       ├── Modal.jsx         ← Modal reusable
-│   │       ├── SearchBar.jsx     ← Search input reusable
-│   │       ├── PrivateRoute.jsx  ← Route guard per role
-│   │       └── QuillEditor.jsx   ← Rich text editor
+│   │       ├── AdminLayout.jsx   ← Layout admin panel
+│   │       ├── PublicLayout.jsx  ← Layout publik (Navbar, Footer, Ticker)
+│   │       ├── Layout.jsx        ← Layout dashboard (Pelatih/Atlet/Wasit)
+│   │       ├── Navbar.jsx        ← Topbar navigation dashboard
+│   │       ├── Sidebar.jsx       ← Sidebar navigation dashboard
+│   │       ├── Badge.jsx         ← Badge status/kategori/medali
+│   │       ├── Modal.jsx         ← Modal popup reusable
+│   │       ├── SearchBar.jsx     ← Input pencarian search data
+│   │       ├── PrivateRoute.jsx  ← Auth route guard (per-role)
+│   │       └── QuillEditor.jsx   ← Rich text editor Quill
 │   │
-│   ├── context/
-│   │   ├── AuthContext.jsx       ← State login & JWT
-│   │   ├── AtletContext.jsx      ← CRUD data atlet
-│   │   ├── PelatihContext.jsx    ← CRUD data pelatih
-│   │   ├── CaborContext.jsx      ← CRUD cabang olahraga
-│   │   ├── PrestasiContext.jsx   ← CRUD prestasi atlet
-│   │   ├── BeritaContext.jsx     ← CRUD & publish berita
-│   │   ├── PengumumanContext.jsx ← CRUD & publish pengumuman
-│   │   ├── KegiatanContext.jsx   ← CRUD & publish kegiatan
-│   │   ├── PengurusContext.jsx   ← CRUD bagan pengurus
-│   │   └── GaleriContext.jsx     ← CRUD & publish galeri
+│   ├── context/                  ← Global State Providers
+│   │   ├── AuthContext.jsx       ← Manajemen login, logout, & JWT token
+│   │   ├── AtletContext.jsx      ← State & aksi data atlet
+│   │   ├── PelatihContext.jsx    ← State & aksi data pelatih
+│   │   ├── CaborContext.jsx      ← State & aksi data cabor
+│   │   ├── PrestasiContext.jsx   ← State & aksi prestasi atlet
+│   │   ├── BeritaContext.jsx     ← State & LocalStorage berita
+│   │   ├── PengumumanContext.jsx ← State & LocalStorage pengumuman
+│   │   ├── KegiatanContext.jsx   ← State & LocalStorage kegiatan
+│   │   ├── PengurusContext.jsx   ← State & LocalStorage pengurus
+│   │   └── GaleriContext.jsx     ← State & LocalStorage galeri
 │   │
-│   ├── data/                     ← Seed data JSON
+│   ├── data/                     ← Fallback/seed JSON data
 │   │   ├── atlet.json
 │   │   ├── pelatih.json
-│   │   ├── cabor.json
-│   │   ├── prestasi.json
-│   │   ├── berita.json
-│   │   ├── pengumuman.json
-│   │   ├── kegiatan.json
-│   │   ├── pengurus.json
-│   │   └── galeri.json
+│   │   └── pengurus.json (dll)
 │   │
 │   ├── hooks/
-│   │   └── useLocalStorage.js    ← Custom hook persistensi data
+│   │   └── useLocalStorage.js    ← Kustom hook persistensi data local
 │   │
-│   ├── pages/
-│   │   ├── LandingPage.jsx       ← Halaman utama publik
-│   │   ├── LoginPage.jsx         ← Login semua role
-│   │   ├── Dashboard.jsx         ← Statistik admin
-│   │   ├── AtletPage.jsx         ← CRUD atlet
-│   │   ├── PelatihPage.jsx       ← CRUD pelatih
-│   │   ├── CaborPage.jsx         ← CRUD cabor
-│   │   ├── PrestasiPage.jsx      ← CRUD prestasi
+│   ├── pages/                    ← Komponen halaman web
+│   │   ├── LandingPage.jsx       ← Landing Page Publik (GSAP Animations)
+│   │   ├── LoginPage.jsx         ← Form Login terpadu
+│   │   ├── Dashboard.jsx         ← Dashboard Statistik Admin
+│   │   ├── AtletPage.jsx         ← CRUD Data Atlet (Admin)
+│   │   ├── PelatihPage.jsx       ← CRUD Data Pelatih (Admin)
+│   │   ├── WasitPage.jsx         ← CRUD Data Wasit (Admin)
+│   │   ├── CaborPage.jsx         ← CRUD Cabang Olahraga (Admin)
+│   │   ├── PrestasiPage.jsx      ← CRUD Prestasi Atlet (Admin)
 │   │   │
-│   │   ├── admin/                ← Halaman kelola konten
+│   │   ├── admin/                ← Konten management page
 │   │   │   ├── BeritaAdminPage.jsx
-│   │   │   ├── PengumumanAdminPage.jsx
+│   │   │   ├── GaleriAdminPage.jsx
 │   │   │   ├── KegiatanAdminPage.jsx
 │   │   │   ├── PengurusAdminPage.jsx
-│   │   │   └── GaleriAdminPage.jsx
+│   │   │   └── PengumumanAdminPage.jsx
 │   │   │
-│   │   ├── dashboard/            ← Dashboard per role
-│   │   │   ├── PelatihDashboard.jsx
+│   │   ├── dashboard/            ← Dashboard spesifik tiap role
 │   │   │   ├── AtletDashboard.jsx
+│   │   │   ├── PelatihDashboard.jsx
 │   │   │   └── WasitDashboard.jsx
 │   │   │
-│   │   └── public/               ← Halaman publik terpisah
+│   │   └── public/               ← Halaman publik sekunder
 │   │       ├── BeritaPage.jsx
 │   │       ├── BeritaDetailPage.jsx
-│   │       ├── PengumumanPage.jsx
+│   │       ├── GaleriPage.jsx
 │   │       ├── KegiatanPage.jsx
-│   │       ├── PengurusPage.jsx
-│   │       └── GaleriPage.jsx
+│   │       ├── PengumumanPage.jsx
+│   │       └── PengurusPage.jsx
 │   │
 │   ├── utils/
-│   │   └── helpers.js            ← formatTanggal, hitungUmur, filterData
+│   │   └── helpers.js            ← Utilitas filter & format tanggal
 │   │
-│   ├── App.jsx                   ← Root routing
-│   ├── main.jsx                  ← Entry point
-│   └── index.css                 ← Global styles + Tailwind
+│   ├── App.css                   ← Custom styles & animations
+│   ├── App.jsx                   ← Konfigurasi router utama
+│   ├── index.css                 ← Tailwind CSS Entry Point
+│   └── main.jsx                  ← React entry mounting
 │
-├── index.html
-├── vite.config.js
-└── package.json
+├── tailwind.config.js            ← Konfigurasi theme & extended utilities
+├── vite.config.js                ← Konfigurasi build Vite & plugin Tailwind
+└── package.json                  ← Dependensi frontend
+
+koni-backend/ (Root - Backend)
+├── config/
+│   └── db.js                     ← Connection Pool MySQL (mysql2/promise)
+├── database/
+│   └── koni_banyumas.sql         ← Database dump & schema
+├── middleware/
+│   ├── auth.js                   ← JWT verification & Role gate
+│   └── upload.js                 ← Konfigurasi storage file (Multer)
+├── routes/
+│   ├── admin.js                  ← Rute kelola entities olahraga (Admin)
+│   ├── atlet.js                  ← Rute dashboard atlet
+│   ├── auth.js                   ← Rute login & token provider
+│   ├── pelatih.js                ← Rute dashboard pelatih
+│   ├── public.js                 ← Rute open/public API stats
+│   └── wasit.js                  ← Rute dashboard wasit
+├── uploads/                      ← Folder asset hasil upload user
+├── create_pengurus_table.js      ← Inisiasi tabel pengurus
+├── seed.js                       ← Data seeder utama (Semua role & cabor)
+├── seed_pengurus.js              ← Seeder bagan pengurus (dari JSON)
+├── server.js                     ← Rute & server runner Express
+└── package.json                  ← Dependensi backend
 ```
 
 ---
 
 ## 🗺️ Peta Halaman
 
+Berikut adalah pemetaan rute halaman pada aplikasi:
+
 ```
-/                       → Landing Page (publik)
-/berita                 → List berita
-/berita/:id             → Detail berita
-/pengumuman             → Daftar pengumuman
-/kegiatan               → Agenda & event
-/pengurus               → Bagan organisasi KONI
-/galeri                 → Galeri foto + lightbox
+/                       → Landing Page (Publik)
+/berita                 → Daftar berita terupdate
+/berita/:id             → Isi lengkap berita
+/pengumuman             → Daftar pengumuman resmi
+/kegiatan               → Daftar agenda kegiatan olahraga
+/pengurus               → Bagan struktur pengurus KONI (visual)
+/galeri                 → Galeri foto dokumentasi kegiatan
 
-/login                  → Halaman login (semua role)
+/login                  → Form Login Multi-Role
 
-/admin/dashboard        → Statistik & ringkasan
-/admin/atlet            → Kelola data atlet
-/admin/pelatih          → Kelola data pelatih
-/admin/cabor            → Kelola cabang olahraga
-/admin/prestasi         → Kelola prestasi atlet
-/admin/berita           → Kelola & publikasi berita
-/admin/pengumuman       → Kelola & publikasi pengumuman
-/admin/kegiatan         → Kelola & publikasi kegiatan
-/admin/pengurus         → Kelola bagan pengurus
-/admin/galeri           → Kelola galeri foto
+/admin/dashboard        → Dashboard utama statistik admin
+/admin/atlet            → Kelola data atlet (CRUD)
+/admin/pelatih          → Kelola data pelatih (CRUD)
+/admin/wasit            → Kelola data wasit (CRUD)
+/admin/cabor            → Kelola data cabang olahraga (CRUD)
+/admin/prestasi         → Kelola prestasi atlet (CRUD)
+/admin/berita           → Kelola berita & artikel (Quill)
+/admin/pengumuman       → Kelola pengumuman ticker
+/admin/kegiatan         → Kelola jadwal kegiatan
+/admin/pengurus         → Kelola struktur pengurus
+/admin/galeri           → Kelola upload galeri foto
 
-/dashboard/pelatih      → Dashboard pelatih
-/dashboard/atlet        → Dashboard atlet
-/dashboard/wasit        → Dashboard wasit
+/dashboard/pelatih      → Area kerja pelatih (input latihan, presensi)
+/dashboard/atlet        → Area kerja atlet (lihat presensi, medali)
+/dashboard/wasit        → Area kerja wasit (laporan tanding, lisensi)
 ```
 
 ---
 
 ## 🔐 Akun Default
 
-| Role | Username | Password |
+Semua akun menggunakan password default: **`koni2024`**
+
+| Role | Username | Kegunaan |
 |------|----------|----------|
-| Admin | `admin` | `koni2024` |
-| Pelatih | Dibuat via panel admin | Ditentukan saat tambah pelatih |
-| Atlet | Dibuat via panel admin | Ditentukan saat tambah atlet |
-| Wasit | Dibuat via panel admin | Ditentukan saat tambah wasit |
-
-> **Catatan:** Untuk mode frontend-only (tanpa backend), autentikasi admin menggunakan kredensial hardcoded. Akun pelatih/atlet/wasit memerlukan backend aktif.
-
----
-
-## 📊 Arsitektur Aplikasi
-
-```
-┌─────────────────────────────────────────────┐
-│              Browser / Client               │
-├──────────────┬──────────────────────────────┤
-│  Landing     │      Admin Panel             │
-│  Page        │   (Protected by AuthCtx)     │
-│  /public     │                              │
-├──────────────┴──────────────────────────────┤
-│              Context API Layer               │
-│  Auth │ Atlet │ Pelatih │ Cabor │ Konten    │
-├─────────────────────────────────────────────┤
-│           Custom Hook Layer                  │
-│         useLocalStorage(key, init)           │
-├──────────────────────┬──────────────────────┤
-│    localStorage      │   REST API           │
-│  (Mode UTS/offline)  │  (Mode UAS/online)   │
-│                      │  http://localhost:5000│
-└──────────────────────┴──────────────────────┘
-```
-
-Data flow-nya: komponen → Context → useLocalStorage → browser localStorage.
-Untuk switch ke backend, cukup ganti isi fungsi di Context dari
-`localStorage.setItem(...)` menjadi `await api.post('/endpoint', data)`.
-
----
-
-## 🎨 Design System
-
-Aplikasi menggunakan Tailwind CSS v4 dengan custom component classes:
-
-```css
-/* Tombol */
-.btn-primary    → Tombol utama biru
-.btn-secondary  → Tombol outline abu
-.btn-danger     → Tombol hapus merah
-
-/* Form */
-.input-field    → Input dengan focus ring
-.label-field    → Label form
-
-/* Layout */
-.card           → Card putih dengan shadow
-.table-wrapper  → Wrapper tabel dengan overflow scroll
-.tbl            → Tabel dengan hover state
-
-/* Badge */
-Badge type="status"   → aktif / tidak_aktif
-Badge type="grade"    → daerah / nasional / internasional
-Badge type="medali"   → emas / perak / perunggu
-Badge type="kategori" → koordinator / fisik / teknik / taktik
-```
+| **Admin** | `admin` | Kelola seluruh data olahraga & konten landing page |
+| **Pelatih** | `budi.santoso`<br>`sri.wahyuni`<br>`hendra.gunawan`<br>`agus.priyono` | Mengelola program latihan bulanan dan presensi harian atlet |
+| **Atlet** | `ahmad.rizki`<br>`dewi.rahayu`<br>`fajar.nugroho`<br>`siti.nurhaliza`<br>`nadia.febriana` | Melihat kehadiran presensi latihan, prestasi, & upload piagam |
+| **Wasit** | `hartono`<br>`sari.dewi`<br>`bambang.setiadi` | Melaporkan riwayat pertandingan terpilih & upload lisensi |
 
 ---
 
@@ -334,15 +337,15 @@ Badge type="kategori" → koordinator / fisik / teknik / taktik
 
 | Nama | NIM | Bagian |
 |------|-----|--------|
-| [Deska Febi Rosiana] | [2403040030] | Setup, Struktur Folder, Styling |
-| [Iqbal Dwi Ganjar Saefullah] | [2403040029] | Context API, State Management, Data |
-| [Erlangga Jaya Diputra] | [2403040019] | Routing, Admin Panel, CRUD |
-| [Andika Candra Wijaya] | [2403040022] | Landing Page, Halaman Publik, Auth |
+| **Deska Febi Rosiana** | 2403040030 | Setup, Struktur Folder, Styling, & UI/UX |
+| **Iqbal Dwi Ganjar Saefullah** | 2403040029 | Context API, State Management, Data, & Integration |
+| **Erlangga Jaya Diputra** | 2403040019 | Routing, Admin Panel, & Fitur CRUD |
+| **Andika Candra Wijaya** | 2403040022 | Landing Page, Halaman Publik, Auth, & Animasi GSAP |
 
 
-**Mata Kuliah:** Pemrograman Web Lanjut
-**Universitas:** Universitas Muhammadiyah Purwokerto
-**Tahun:** 2024
+**Mata Kuliah:** Pemrograman Web Lanjut  
+**Universitas:** Universitas Muhammadiyah Purwokerto  
+**Tahun:** 2026
 
 ---
 
@@ -350,12 +353,12 @@ Badge type="kategori" → koordinator / fisik / teknik / taktik
 
 <div align="center">
 
-**KONI Kabupaten Banyumas**
-Komite Olahraga Nasional Indonesia
+**KONI Kabupaten Banyumas**  
+*Komite Olahraga Nasional Indonesia*
 
 *Narasumber: Triani Budi Lestari, S.E. — Wakil Sekretaris Umum*
 
-Jl. ... · Purwokerto · Jawa Tengah · Indonesia
+Purwokerto · Jawa Tengah · Indonesia
 
 </div>
 
@@ -364,8 +367,6 @@ Jl. ... · Purwokerto · Jawa Tengah · Indonesia
 ## 📄 Lisensi
 
 Proyek ini dibuat untuk keperluan akademik. Hak cipta © 2026 Tim Pengembang.
-
----
 
 <div align="center">
 
