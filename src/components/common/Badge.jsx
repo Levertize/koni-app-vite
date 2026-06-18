@@ -35,6 +35,7 @@ const config = {
   },
 }
 
+
 export default function Badge({ type, value }) {
   const item = config[type]?.[value]
   if (!item) return <span className="text-xs text-gray-400">-</span>
