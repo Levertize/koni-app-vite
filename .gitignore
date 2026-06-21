@@ -24,7 +24,7 @@ dist-ssr
 *.sw?
 
 # Dummy files
-dummy.md
+# dummy.md
 
 .agents/skills/gsap-core/SKILL.md
 .agents/skills/gsap-frameworks/SKILL.md
