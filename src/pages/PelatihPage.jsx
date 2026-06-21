@@ -67,6 +67,20 @@ export default function PelatihPage() {
 
   return (
     <div className="space-y-4">
+      {/* Stat */}
+      <div className="grid grid-cols-3 gap-4">
+        {[
+          { label: 'Total Pelatih', value: pelatih.length, cls: 'border-brand-100 bg-brand-50 text-brand-700' },
+          { label: 'Aktif',         value: pelatih.filter(p => p.status === 'aktif').length, cls: 'border-emerald-100 bg-emerald-50 text-emerald-700' },
+          { label: 'Tidak Aktif',   value: pelatih.filter(p => p.status !== 'aktif').length, cls: 'border-gray-100 bg-gray-50 text-gray-600' },
+        ].map(s => (
+          <div key={s.label} className={`card p-4 border ${s.cls}`}>
+            <p className="text-xs font-medium">{s.label}</p>
+            <p className="text-2xl font-bold mt-1">{s.value}</p>
+          </div>
+        ))}
+      </div>
+
       <div className="flex flex-wrap items-center justify-between gap-3">
         <div className="flex items-center gap-2">
           <SearchBar value={query} onChange={setQuery} placeholder="Cari nama / NIK..." />
